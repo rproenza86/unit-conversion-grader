@@ -1,0 +1,10 @@
+footer {
+    top: -18px;
+    position: relative;
+}
+
+footer,
+footer > a {
+    color: white;
+    background-color: #622fee;
+}

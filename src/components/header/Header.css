@@ -1,0 +1,7 @@
+.mdc-top-app-bar__section {
+    width: 100%;
+}
+
+.mdc-top-app-bar__section--align-start {
+    justify-content: center;
+}

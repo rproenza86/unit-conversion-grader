@@ -4,20 +4,25 @@
     "private": true,
     "homepage": "https://unit-conversion-grader.web.app",
     "dependencies": {
+        "@material/react-top-app-bar": "^0.15.0",
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
         "@testing-library/user-event": "^7.1.2",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
         "husky": "^4.2.1",
         "lint-staged": "^10.0.7",
         "prettier": "^1.19.1",
         "react": "^16.12.0",
         "react-dom": "^16.12.0",
-        "react-scripts": "3.3.1"
+        "react-scripts": "3.3.1",
+        "react-test-renderer": "^16.12.0"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
+        "test:ci": "CI=true npm test -- --coverage",
         "eject": "react-scripts eject",
         "deploy": "./node_modules/.bin/firebase deploy --only hosting"
     },
