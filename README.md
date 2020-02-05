@@ -1,4 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ # [Create React App](https://unit-conversion-grader.web.app)
+> System to grade students unit-conversion problems solutions
+
+## Description
+
+Web application for Science Teachers of the “Unit Conversion” science unit.
+
+### How it works
+
+Teachers assign students unit-conversion problems on paper worksheets. After students turn in their completed worksheet, the teachers will use this web app enter the questions and student responses into a computer to be graded.
+
+**Students will convert:**
+
+    - temperatures​ between: ​Kelvin, Celsius​,​ Fahrenheit​, and​ Rankine
+    - volumes​ between: ​liters​, ​tablespoons​, ​cubic-inches, cups​,​ cubic-feet, ​and​ gallons
 
 ## Available Scripts
 
