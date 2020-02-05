@@ -49,5 +49,19 @@
     },
     "devDependencies": {
         "firebase-tools": "^7.12.1"
+    },
+    "jest": {
+        "coverageThreshold": {
+            "global": {
+                "branches": 100,
+                "functions": 100,
+                "lines": 100,
+                "statements": 100
+            }
+        },
+        "coveragePathIgnorePatterns": [
+            "/src/serviceWorker.js",
+            "/src/index.js"
+        ]
     }
 }
