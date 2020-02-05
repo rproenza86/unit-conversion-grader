@@ -2,6 +2,7 @@ import React from 'react';
 
 // component dependencies
 import Header from '../header/Header';
+import Footer from '../footer/Footer';
 
 // assets
 import logo from './logo.svg';
@@ -13,7 +14,7 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <header className="App-header">
+            <main className="App-main">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>Code change to test CI/CD workflow</p>
                 <a
@@ -24,7 +25,8 @@ function App() {
                 >
                     Learn React
                 </a>
-            </header>
+            </main>
+            <Footer />
         </div>
     );
 }

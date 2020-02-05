@@ -11,15 +11,13 @@ import './Header.css';
 
 function Header() {
     return (
-        <div>
-            <TopAppBar>
-                <TopAppBarRow>
-                    <TopAppBarSection align="start">
-                        <TopAppBarTitle>UNIT CONVERSIONS GRADER</TopAppBarTitle>
-                    </TopAppBarSection>
-                </TopAppBarRow>
-            </TopAppBar>
-        </div>
+        <TopAppBar>
+            <TopAppBarRow>
+                <TopAppBarSection align="start">
+                    <TopAppBarTitle>UNIT CONVERSIONS GRADER</TopAppBarTitle>
+                </TopAppBarSection>
+            </TopAppBarRow>
+        </TopAppBar>
     );
 }
 
