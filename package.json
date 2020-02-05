@@ -18,6 +18,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
+        "test:ci": "CI=true npm test -- --coverage",
         "eject": "react-scripts eject",
         "deploy": "./node_modules/.bin/firebase deploy --only hosting"
     },
