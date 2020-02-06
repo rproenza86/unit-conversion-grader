@@ -1,8 +1,19 @@
 {
-    "name": "unit-conversion-grader",
-    "version": "0.1.0",
+    "name": "@rproenza/unit-measure-conversion-judge",
+    "version": "1.0.0",
     "private": true,
-    "homepage": "https://unit-conversion-grader.web.app",
+    "description": "Web application for Science Teachers of the “Unit Conversion” science unit",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rproenza86/unit-conversion-grader.git"
+    },
+    "keywords": [],
+    "author": "Raul Rodriguez Proenza <raul.r.proenza@gmail.com> (https://github.com/rproenza86)",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/rproenza86/unit-conversion-grader/issues"
+    },
+    "homepage": "https://github.com/rproenza86/unit-conversion-grader#readme",
     "scripts": {
         "start": "SASS_PATH=./node_modules react-scripts start",
         "build": "SASS_PATH=./node_modules react-scripts build",
