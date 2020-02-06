@@ -3,41 +3,11 @@
     "version": "0.1.0",
     "private": true,
     "homepage": "https://unit-conversion-grader.web.app",
-    "dependencies": {
-        "@material/elevation": "^4.0.0",
-        "@material/react-button": "^0.15.0",
-        "@material/react-icon-button": "^0.15.0",
-        "@material/react-layout-grid": "^0.15.0",
-        "@material/react-list": "^0.15.0",
-        "@material/react-material-icon": "^0.15.0",
-        "@material/react-menu": "^0.15.0",
-        "@material/react-menu-surface": "^0.15.0",
-        "@material/react-select": "^0.15.0",
-        "@material/react-tab-bar": "^0.15.0",
-        "@material/react-tab-indicator": "^0.15.0",
-        "@material/react-tab-scroller": "^0.15.0",
-        "@material/react-text-field": "^0.15.0",
-        "@material/react-top-app-bar": "^0.15.0",
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/user-event": "^7.1.2",
-        "antd": "^3.26.8",
-        "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.2",
-        "husky": "^4.2.1",
-        "lint-staged": "^10.0.7",
-        "prettier": "^1.19.1",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
-        "react-scripts": "3.3.1",
-        "react-test-renderer": "^16.12.0",
-        "rsuite": "^4.2.1",
-        "units-converter": "^1.0.2"
-    },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
+        "start": "SASS_PATH=./node_modules react-scripts start",
+        "build": "SASS_PATH=./node_modules react-scripts build",
         "test": "react-scripts test",
-        "test:ci": "CI=true npm test -- --coverage",
+        "test:ci": "SASS_PATH=./node_modules CI=true npm test -- --coverage",
         "eject": "react-scripts eject",
         "deploy": "./node_modules/.bin/firebase deploy --only hosting"
     },
@@ -67,16 +37,12 @@
             "git add"
         ]
     },
-    "devDependencies": {
-        "@testing-library/react": "^9.4.0",
-        "firebase-tools": "^7.12.1"
-    },
     "jest": {
         "coverageThreshold": {
             "global": {
                 "branches": 78,
                 "functions": 96,
-                "lines": 88,
+                "lines": 87,
                 "statements": 88
             }
         },
@@ -84,5 +50,40 @@
             "/src/serviceWorker.js",
             "/src/index.js"
         ]
+    },
+    "devDependencies": {
+        "@testing-library/react": "^9.4.0",
+        "firebase-tools": "^7.12.1",
+        "@testing-library/user-event": "^7.1.2"
+    },
+    "dependencies": {
+        "@material/elevation": "^4.0.0",
+        "@material/react-button": "^0.15.0",
+        "@material/react-icon-button": "^0.15.0",
+        "@material/react-layout-grid": "^0.15.0",
+        "@material/react-list": "^0.15.0",
+        "@material/react-material-icon": "^0.15.0",
+        "@material/react-menu": "^0.15.0",
+        "@material/react-menu-surface": "^0.15.0",
+        "@material/react-select": "^0.15.0",
+        "@material/react-tab-bar": "^0.15.0",
+        "@material/react-tab-indicator": "^0.15.0",
+        "@material/react-tab-scroller": "^0.15.0",
+        "@material/react-text-field": "^0.15.0",
+        "@material/react-top-app-bar": "^0.15.0",
+        "@testing-library/jest-dom": "^4.2.4",
+        "antd": "^3.26.8",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "husky": "^4.2.1",
+        "lint-staged": "^10.0.7",
+        "node-sass": "^4.13.1",
+        "prettier": "^1.19.1",
+        "react": "^16.12.0",
+        "react-dom": "^16.12.0",
+        "react-scripts": "3.3.1",
+        "react-test-renderer": "^16.12.0",
+        "rsuite": "^4.2.1",
+        "units-converter": "^1.0.2"
     }
 }

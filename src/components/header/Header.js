@@ -6,8 +6,7 @@ import TopAppBar, {
 } from '@material/react-top-app-bar';
 
 // styles
-import '@material/react-top-app-bar/dist/top-app-bar.css';
-import './Header.css';
+import './Header.scss';
 
 function Header() {
     return (

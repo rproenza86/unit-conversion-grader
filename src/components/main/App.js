@@ -6,7 +6,7 @@ import Footer from '../footer/Footer';
 import Grader from '../grader/Grader';
 
 // styles
-import './App.css';
+import './App.scss';
 
 function App() {
     return (
