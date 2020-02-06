@@ -4,17 +4,10 @@ import MaterialIcon from '@material/react-material-icon';
 import Select, { Option } from '@material/react-select';
 import Button from '@material/react-button';
 
+// internal dependencies
 import conversionEvaluator, { evaluationTypes } from '../../utils/conversionEvaluator';
 
 // styles
-import '@material/react-text-field/dist/text-field.css';
-import '@material/react-menu-surface/dist/menu-surface.css';
-import '@material/react-list/dist/list.css';
-import '@material/react-icon-button/dist/icon-button.css';
-import '@material/react-button/dist/button.css';
-import '@material/react-menu-surface/dist/menu-surface.css';
-import '@material/react-menu/dist/menu.css';
-import '@material/react-select/dist/select.css';
 import './AssignmentForm.scss';
 
 function AssignmentForm({ units, onUpdates, onGradeUpdate, unitType, onReset }) {

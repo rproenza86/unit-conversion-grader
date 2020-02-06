@@ -6,27 +6,13 @@ import { Steps } from 'rsuite';
 import { Cell, Grid, Row } from '@material/react-layout-grid';
 import { Alert } from 'antd';
 
+// internal dependencies
 import AssignmentForm from '../assignmentForm/AssignmentForm';
 import { Temperatures, Volumes } from '../../constants/unitsMeasures';
 import { unitsType } from '../../utils/conversionEvaluator';
 
 // styles
-import '@material/react-tab-bar/dist/tab-bar.css';
-import '@material/react-tab-scroller/dist/tab-scroller.css';
-import '@material/react-tab/dist/tab.css';
-import '@material/react-tab-indicator/dist/tab-indicator.css';
-import '@material/react-material-icon/dist/material-icon.css';
-import '@material/elevation/dist/mdc.elevation.css';
 import './Grader.scss';
-import 'rsuite/dist/styles/rsuite-default.css';
-import '@material/react-layout-grid/dist/layout-grid.css';
-import 'antd/dist/antd.css';
-
-const styles = {
-    width: '200px',
-    display: 'inline-table',
-    verticalAlign: 'top'
-};
 
 function Grader({ activeIndexP = 0 }) {
     const [activeIndex, setActiveIndex] = useState(activeIndexP);
@@ -71,7 +57,7 @@ function Grader({ activeIndexP = 0 }) {
 
     function generateSteps() {
         return (
-            <Steps vertical style={styles}>
+            <Steps vertical className="steps-list">
                 {stepsStatus.map((status, index) => (
                     <Steps.Item status={status} key={index} />
                 ))}
