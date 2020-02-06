@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main App component should display render Grader component 1`] = `
+<div
+  className="App"
+>
+  <Header />
+  <main
+    className="App-main"
+  >
+    <Grader />
+  </main>
+  <Footer />
+</div>
+`;

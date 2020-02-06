@@ -4,6 +4,11 @@
     "private": true,
     "homepage": "https://unit-conversion-grader.web.app",
     "dependencies": {
+        "@material/elevation": "^4.0.0",
+        "@material/react-material-icon": "^0.15.0",
+        "@material/react-tab-bar": "^0.15.0",
+        "@material/react-tab-indicator": "^0.15.0",
+        "@material/react-tab-scroller": "^0.15.0",
         "@material/react-top-app-bar": "^0.15.0",
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
