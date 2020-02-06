@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField, { HelperText, Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 import Select, { Option } from '@material/react-select';
 import Button from '@material/react-button';
+
+import conversionEvaluator, { evaluationTypes } from '../../utils/conversionEvaluator';
 
 // styles
 import '@material/react-text-field/dist/text-field.css';
@@ -15,11 +17,11 @@ import '@material/react-menu/dist/menu.css';
 import '@material/react-select/dist/select.css';
 import './AssignmentForm.css';
 
-function AssignmentForm({ units }) {
+function AssignmentForm({ units, onUpdates, onGradeUpdate, unitType, onReset }) {
     const [fromInputValue, setFromInputValue] = useState();
-    const [studentResponseValue, setStudentResponseValue] = useState();
     const [inputUnitValue, setInputUnitValue] = useState();
     const [targetUnitValue, setTargetUnitValue] = useState();
+    const [studentResponseValue, setStudentResponseValue] = useState();
 
     const generateUnitsOptions = () => {
         const options = units.map(unit => (
@@ -38,6 +40,59 @@ function AssignmentForm({ units }) {
         setStudentResponseValue();
         setInputUnitValue();
         setTargetUnitValue();
+        onReset && onReset();
+    };
+
+    const updateFieldStatus = (index, value) => onUpdates && onUpdates(index, value);
+
+    useEffect(() => {
+        evaluateOnChange();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [inputUnitValue, targetUnitValue, fromInputValue, studentResponseValue]);
+
+    const evaluateOnChange = () => {
+        if (!onGradeUpdate) {
+            return;
+        }
+
+        if (!fromInputValue || !studentResponseValue || !inputUnitValue || !targetUnitValue) {
+            return;
+        }
+
+        const evaluation = conversionEvaluator({
+            unit: unitType,
+            inputValue: Number(fromInputValue),
+            inputValueUnit: inputUnitValue,
+            conversionValueUnit: targetUnitValue,
+            conversionValue: Number(studentResponseValue)
+        });
+
+        switch (evaluation) {
+            case evaluationTypes.correct:
+                onGradeUpdate({
+                    message: 'Grades Result',
+                    description: 'The student solution is correct',
+                    type: 'success'
+                });
+                break;
+            case evaluationTypes.incorrect:
+                onGradeUpdate({
+                    message: 'Grades Result',
+                    description: 'The student solution is incorrect',
+                    type: 'error'
+                });
+                break;
+            case evaluationTypes.invalid:
+                onGradeUpdate({
+                    message: 'Grades Result',
+                    description: 'The student solution is invalid',
+                    type: 'warning'
+                });
+                break;
+
+            default:
+                break;
+        }
     };
 
     return (
@@ -49,15 +104,23 @@ function AssignmentForm({ units }) {
             >
                 <Input
                     value={fromInputValue}
-                    onChange={e => setFromInputValue(e.currentTarget.value)}
+                    onChange={e => {
+                        setFromInputValue(e.currentTarget.value);
+                        updateFieldStatus(0, e.currentTarget.value);
+                    }}
                     type="number"
+                    id="inputValue"
                 />
             </TextField>
 
             <Select
                 label="Input Unit Measure"
                 value={inputUnitValue}
-                onChange={evt => setInputUnitValue(evt.target.value)}
+                onChange={evt => {
+                    setInputUnitValue(evt.target.value);
+                    updateFieldStatus(1, evt.target.value);
+                }}
+                id="inputUnit"
             >
                 {generateUnitsOptions()}
             </Select>
@@ -67,7 +130,11 @@ function AssignmentForm({ units }) {
             <Select
                 label="Target Unit Measure"
                 value={targetUnitValue}
-                onChange={evt => setTargetUnitValue(evt.target.value)}
+                onChange={evt => {
+                    setTargetUnitValue(evt.target.value);
+                    updateFieldStatus(2, evt.target.value);
+                }}
+                id="targetUnit"
             >
                 {generateUnitsOptions()}
             </Select>
@@ -81,12 +148,16 @@ function AssignmentForm({ units }) {
             >
                 <Input
                     value={studentResponseValue}
-                    onChange={e => setStudentResponseValue(e.currentTarget.value)}
+                    onChange={e => {
+                        setStudentResponseValue(e.currentTarget.value);
+                        updateFieldStatus(3, e.currentTarget.value);
+                    }}
                     type="number"
+                    id="targetValue"
                 />
             </TextField>
 
-            <Button className="mdc-button--raised mdc-button__icon" onClick={onResetClick}>
+            <Button className="mdc-button--raised mdc-button__icon reset" onClick={onResetClick}>
                 Reset
             </Button>
         </>

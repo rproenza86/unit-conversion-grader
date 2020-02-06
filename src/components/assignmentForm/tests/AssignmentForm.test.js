@@ -26,7 +26,7 @@ describe('AssignmentForm component', () => {
         ).toEqual('');
     });
     it('should inputs with null values', () => {
-        const wrapper = mount(<AssignmentForm units={Volumes} />);
+        const wrapper = mount(<AssignmentForm units={Volumes} onReset={() => {}} />);
 
         wrapper
             .find('input')

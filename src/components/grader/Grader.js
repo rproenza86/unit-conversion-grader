@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Tab from '@material/react-tab';
 import TabBar from '@material/react-tab-bar';
 import MaterialIcon from '@material/react-material-icon';
+import { Steps } from 'rsuite';
+import { Cell, Grid, Row } from '@material/react-layout-grid';
+import { Alert } from 'antd';
 
 import AssignmentForm from '../assignmentForm/AssignmentForm';
 import { Temperatures, Volumes } from '../../constants/unitsMeasures';
+import { unitsType } from '../../utils/conversionEvaluator';
 
 // styles
 import '@material/react-tab-bar/dist/tab-bar.css';
@@ -13,11 +17,67 @@ import '@material/react-tab/dist/tab.css';
 import '@material/react-tab-indicator/dist/tab-indicator.css';
 import '@material/react-material-icon/dist/material-icon.css';
 import '@material/elevation/dist/mdc.elevation.css';
-
 import './Grader.css';
+import 'rsuite/dist/styles/rsuite-default.css';
+import '@material/react-layout-grid/dist/layout-grid.css';
+import 'antd/dist/antd.css';
+
+const styles = {
+    width: '200px',
+    display: 'inline-table',
+    verticalAlign: 'top'
+};
 
 function Grader({ activeIndexP = 0 }) {
     const [activeIndex, setActiveIndex] = useState(activeIndexP);
+
+    const defaultStepsStatus = ['', '', '', ''];
+    const [stepsStatus, setStepsStatus] = useState(defaultStepsStatus);
+
+    const defaultGraderMessage = {
+        message: 'Grades Result',
+        description: 'Enter data to grade student',
+        type: 'info'
+    };
+    const [graderMessage, setGraderMessage] = useState(defaultGraderMessage);
+
+    // refresh message on tab changes
+    useEffect(() => {
+        setGraderMessage(defaultGraderMessage);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [activeIndex]);
+
+    // updating step component
+    function updateStep(index, value) {
+        const nextStatus = [...stepsStatus];
+        // possible values: ["finish","wait","process","error"].
+        nextStatus[index] = !!value ? 'finish' : 'error';
+        setStepsStatus(nextStatus);
+    }
+
+    function generateAssignmentForm(unit) {
+        const unitsList = unit === unitsType.temp ? Temperatures : Volumes;
+
+        return (
+            <AssignmentForm
+                units={unitsList}
+                unitType={unit}
+                onUpdates={updateStep}
+                onReset={() => setGraderMessage(defaultGraderMessage)}
+                onGradeUpdate={graderMessage => setGraderMessage(graderMessage)}
+            />
+        );
+    }
+
+    function generateSteps() {
+        return (
+            <Steps vertical style={styles}>
+                {stepsStatus.map((status, index) => (
+                    <Steps.Item status={status} key={index} />
+                ))}
+            </Steps>
+        );
+    }
 
     return (
         <div className="grader mdc-elevation--z12">
@@ -32,19 +92,30 @@ function Grader({ activeIndexP = 0 }) {
                 </Tab>
             </TabBar>
 
-            {activeIndex === 0 && (
-                <div>
-                    <h4>Grading Temperatures</h4>
-                    <AssignmentForm units={Temperatures} />
-                </div>
-            )}
+            <Grid>
+                <Row>
+                    <Cell className="steps" desktopColumns={2} phoneColumns={1} tabletColumns={1}>
+                        {generateSteps()}
+                    </Cell>
+                    <Cell desktopColumns={10} phoneColumns={3} tabletColumns={7}>
+                        {activeIndex === 0 && (
+                            <div>
+                                <h4>Grading Temperatures</h4>
+                                {generateAssignmentForm(unitsType.temp)}
+                            </div>
+                        )}
 
-            {activeIndex === 1 && (
-                <div>
-                    <h4>Grading Volumes</h4>
-                    <AssignmentForm units={Volumes} />
-                </div>
-            )}
+                        {activeIndex === 1 && (
+                            <div>
+                                <h4>Grading Volumes</h4>
+                                {generateAssignmentForm(unitsType.vol)}
+                            </div>
+                        )}
+                    </Cell>
+                </Row>
+            </Grid>
+
+            <Alert {...graderMessage} showIcon />
         </div>
     );
 }
