@@ -18,23 +18,26 @@ import './AssignmentForm.css';
 function AssignmentForm({ units }) {
     const [fromInputValue, setFromInputValue] = useState();
     const [studentResponseValue, setStudentResponseValue] = useState();
+    const [inputUnitValue, setInputUnitValue] = useState();
+    const [targetUnitValue, setTargetUnitValue] = useState();
 
-    const defaultSelectValue = units[0].value;
-    const [inputUnitValue, setInputUnitValue] = useState(defaultSelectValue);
-    const [targetUnitValue, setTargetUnitValue] = useState(defaultSelectValue);
-
-    const generateUnitsOptions = () =>
-        units.map(unit => (
+    const generateUnitsOptions = () => {
+        const options = units.map(unit => (
             <Option key={unit.value} value={unit.value}>
                 {unit.label}
             </Option>
         ));
 
+        options.unshift(<Option key={units.length} disabled></Option>);
+
+        return options;
+    };
+
     const onResetClick = () => {
         setFromInputValue();
         setStudentResponseValue();
-        setInputUnitValue(defaultSelectValue);
-        setTargetUnitValue(defaultSelectValue);
+        setInputUnitValue();
+        setTargetUnitValue();
     };
 
     return (

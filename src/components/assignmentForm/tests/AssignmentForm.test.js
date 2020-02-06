@@ -55,20 +55,18 @@ describe('AssignmentForm component', () => {
     it('should select with default values', () => {
         const wrapper = mount(<AssignmentForm units={Volumes} />);
 
-        const defaultSelectValue = Volumes[0].value;
-
         expect(
             wrapper
                 .find('select')
                 .at(0)
                 .prop('value')
-        ).toEqual(defaultSelectValue);
+        ).toEqual('');
         expect(
             wrapper
                 .find('select')
                 .at(1)
                 .prop('value')
-        ).toEqual(defaultSelectValue);
+        ).toEqual('');
     });
     it('should update select values on changes', () => {
         const wrapper = mount(<AssignmentForm units={Volumes} />);
