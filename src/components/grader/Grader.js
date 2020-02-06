@@ -3,6 +3,9 @@ import Tab from '@material/react-tab';
 import TabBar from '@material/react-tab-bar';
 import MaterialIcon from '@material/react-material-icon';
 
+import AssignmentForm from '../assignmentForm/AssignmentForm';
+import { Temperatures, Volumes } from '../../constants/unitsMeasures';
+
 // styles
 import '@material/react-tab-bar/dist/tab-bar.css';
 import '@material/react-tab-scroller/dist/tab-scroller.css';
@@ -32,12 +35,14 @@ function Grader({ activeIndexP = 0 }) {
             {activeIndex === 0 && (
                 <div>
                     <h4>Grading Temperatures</h4>
+                    <AssignmentForm units={Temperatures} />
                 </div>
             )}
 
             {activeIndex === 1 && (
                 <div>
                     <h4>Grading Volumes</h4>
+                    <AssignmentForm units={Volumes} />
                 </div>
             )}
         </div>
