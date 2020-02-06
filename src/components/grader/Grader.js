@@ -17,7 +17,7 @@ import '@material/react-tab/dist/tab.css';
 import '@material/react-tab-indicator/dist/tab-indicator.css';
 import '@material/react-material-icon/dist/material-icon.css';
 import '@material/elevation/dist/mdc.elevation.css';
-import './Grader.css';
+import './Grader.scss';
 import 'rsuite/dist/styles/rsuite-default.css';
 import '@material/react-layout-grid/dist/layout-grid.css';
 import 'antd/dist/antd.css';

@@ -15,7 +15,7 @@ import '@material/react-button/dist/button.css';
 import '@material/react-menu-surface/dist/menu-surface.css';
 import '@material/react-menu/dist/menu.css';
 import '@material/react-select/dist/select.css';
-import './AssignmentForm.css';
+import './AssignmentForm.scss';
 
 function AssignmentForm({ units, onUpdates, onGradeUpdate, unitType, onReset }) {
     const [fromInputValue, setFromInputValue] = useState();

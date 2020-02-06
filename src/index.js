@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // main app dependencies
-import './components/main/index.css';
+import './components/main/index.scss';
 import App from './components/main/App';
 
 // service worker
