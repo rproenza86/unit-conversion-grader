@@ -1,48 +1,64 @@
-@import '@material/react-tab-bar/index.scss';
-@import '@material/react-tab-scroller/index.scss';
-@import '@material/react-tab/index.scss';
-@import '@material/react-tab-indicator/index.scss';
-@import '@material/react-material-icon/index.scss';
-@import '@material/elevation/mdc-elevation.scss';
-@import '@material/react-layout-grid/index.scss';
-@import '~rsuite/dist/styles/rsuite-default.css';
-@import '~antd/dist/antd.css';
+@import "@material/react-tab-bar/index.scss";
+@import "@material/react-tab-scroller/index.scss";
+@import "@material/react-tab/index.scss";
+@import "@material/react-tab-indicator/index.scss";
+@import "@material/react-material-icon/index.scss";
+@import "@material/elevation/mdc-elevation.scss";
+@import "@material/react-layout-grid/index.scss";
+@import "~rsuite/dist/styles/rsuite-default.css";
+@import "~antd/dist/antd.css";
+@import "@material/react-switch/index.scss";
 
 .grader {
-    color: black;
-    min-width: 60vw;
-    max-width: 61vw;
-    min-height: 70vh;
+  color: black;
+  min-width: 60vw;
+  max-width: 61vw;
+  min-height: 70vh;
 
-    .ant-alert-with-description {
-        margin: 0 20% !important; // is the only way to override this rule given the library styles
-    }
+  .ant-alert-with-description {
+    margin: 0 20%;
+    text-align: justify;
+  }
 
+  .steps {
+    align-self: center;
+    position: relative;
+    left: 125%;
+  }
+
+  .steps-list {
+    width: 200px;
+    display: "inline-table";
+    vertical-align: "top";
+  }
+
+  .mdc-switch {
+    margin-left: -32px;
+  }
+
+  .switch-label {
+    position: fixed;
+    margin-top: 32px;
+    margin-left: -81px;
+    font-size: medium;
+  }
+
+  @media (max-width: 479px) {
     .steps {
-        align-self: center;
-        position: relative;
-        left: 125%;
+      align-self: center;
+      left: 37%;
     }
-
-    .steps-list {
-        width: 200px;
-        display: 'inline-table';
-        vertical-align: 'top';
-    }
+  }
 }
 
 @media (max-width: 479px) {
-    .grader {
-        max-width: unset;
-    }
+  .grader {
+    max-width: unset;
+    min-height: 74vh;
+  }
 
-    .steps {
-        align-self: center;
-        position: initial;
-        left: initial;
-    }
-
-    .ant-alert-with-description {
-        margin: initial !important;
-    }
+  .ant-alert-with-description {
+    margin: initial !important;
+    margin-bottom: 18px !important;
+  }
 }
