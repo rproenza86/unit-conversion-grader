@@ -31,9 +31,9 @@ function Grader({ activeIndexP = 0 }) {
 
   // refresh message on tab changes
   useEffect(() => {
-    setGraderMessage(defaultGraderMessage);
+    resetGrader();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeIndex]);
+  }, [activeIndex, isErrorProneEnable]);
 
   // updating step component
   function updateStep(index, value) {
@@ -43,15 +43,33 @@ function Grader({ activeIndexP = 0 }) {
     setStepsStatus(nextStatus);
   }
 
+  function resetGrader() {
+    setGraderMessage(defaultGraderMessage);
+    setStepsStatus(defaultStepsStatus);
+  }
+
   function generateAssignmentForm(unit) {
-    const unitsList = unit === unitsType.temp ? Temperatures : Volumes;
+    let unitsList;
+
+    switch (unit) {
+      case unitsType.temp:
+        unitsList = Temperatures;
+        break;
+      case unitsType.vol:
+        unitsList = Volumes;
+        break;
+
+      default:
+        unitsList = [...Temperatures, ...Volumes];
+        break;
+    }
 
     return (
       <AssignmentForm
         units={unitsList}
         unitType={unit}
         onUpdates={updateStep}
-        onReset={() => setGraderMessage(defaultGraderMessage)}
+        onReset={resetGrader}
         onGradeUpdate={graderMessage => setGraderMessage(graderMessage)}
       />
     );
@@ -69,19 +87,21 @@ function Grader({ activeIndexP = 0 }) {
 
   return (
     <div className="grader mdc-elevation--z12">
-      <TabBar
-        activeIndex={activeIndex}
-        handleActiveIndexUpdate={setActiveIndex}
-      >
-        <Tab className="temperatures-tab">
-          <MaterialIcon icon="timeline" />
-          <span className="mdc-tab__text-label">Temperatures</span>
-        </Tab>
-        <Tab className="volumes-tab">
-          <MaterialIcon icon="filter_frames" />
-          <span className="mdc-tab__text-label">Volumes</span>
-        </Tab>
-      </TabBar>
+      {!isErrorProneEnable && (
+        <TabBar
+          activeIndex={activeIndex}
+          handleActiveIndexUpdate={setActiveIndex}
+        >
+          <Tab className="temperatures-tab">
+            <MaterialIcon icon="timeline" />
+            <span className="mdc-tab__text-label">Temperatures</span>
+          </Tab>
+          <Tab className="volumes-tab">
+            <MaterialIcon icon="filter_frames" />
+            <span className="mdc-tab__text-label">Volumes</span>
+          </Tab>
+        </TabBar>
+      )}
 
       <Grid>
         <Row>
@@ -103,17 +123,24 @@ function Grader({ activeIndexP = 0 }) {
             </label>
           </Cell>
           <Cell desktopColumns={10} phoneColumns={3} tabletColumns={7}>
-            {activeIndex === 0 && (
+            {!isErrorProneEnable && activeIndex === 0 && (
               <div>
                 <h4>Grading Temperatures</h4>
                 {generateAssignmentForm(unitsType.temp)}
               </div>
             )}
 
-            {activeIndex === 1 && (
+            {!isErrorProneEnable && activeIndex === 1 && (
               <div>
                 <h4>Grading Volumes</h4>
                 {generateAssignmentForm(unitsType.vol)}
+              </div>
+            )}
+
+            {isErrorProneEnable && (
+              <div>
+                <h4>Grading Any Unit</h4>
+                {generateAssignmentForm(unitsType.any)}
               </div>
             )}
           </Cell>

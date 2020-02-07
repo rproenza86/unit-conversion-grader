@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { act } from "react-dom/test-utils";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { fireEvent } from "@testing-library/react";
 
 import Grader from "../Grader";
@@ -92,5 +92,15 @@ describe("Grader component integration tests", () => {
       resetBtn.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     });
     expect(inputField.value).toBe("");
+  });
+
+  it("Should switch change the form title onChange", function() {
+    const checkbox = container.querySelector("#error-prone");
+    // Test second render and effect
+    act(() => {
+      checkbox.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+    const sectionTitle = container.querySelector("h4");
+    expect(sectionTitle.textContent).toBe("Grading Any Unit");
   });
 });
