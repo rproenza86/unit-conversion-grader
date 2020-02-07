@@ -76,6 +76,7 @@ function AssignmentForm({
   /**
    * This performance optimization improve the computation from 6ms to 0.3ms
    */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const solutionEvaluation = useMemo(() => evaluateSolution(), [
     inputUnitValue,
     targetUnitValue,
