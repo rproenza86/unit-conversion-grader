@@ -13,7 +13,7 @@
     "bugs": {
         "url": "https://github.com/rproenza86/unit-conversion-grader/issues"
     },
-    "homepage": "https://github.com/rproenza86/unit-conversion-grader#readme",
+    "homepage": "https://unit-conversion-grader.web.app",
     "scripts": {
         "start": "SASS_PATH=./node_modules react-scripts start",
         "build": "SASS_PATH=./node_modules react-scripts build",
