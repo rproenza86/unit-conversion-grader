@@ -30,7 +30,7 @@ Teachers assign students unit-conversion problems on paper worksheets. After stu
 **Students will convert the following units:**
 
   - **Temperatures:** ​Kelvin, Celsius​,​ Fahrenheit​, and​ Rankine
-  - **Volumes​: ​Liters:**​ ​Tablespoons​, ​Cubic-inches, Cups​,​ Cubic-feet, ​and​ Gallons
+  - **Volumes**: ​Liters,​ ​Tablespoons​, ​Cubic-inches, Cups​,​ Cubic-feet, ​and​ Gallons
 
 Note: the app does not allow conversion between invalid units.
 
