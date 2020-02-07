@@ -1,27 +1,12 @@
-# [Unit Measure Conversion Judge](https://unit-conversion-grader.web.app)
+# [Unit Conversion Grading](https://unit-conversion-grader.web.app)
 
-> System to grade students unit-conversion problems solutions
 
-Continuos Delivery
-> Powering CI/CD with  [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions)
+> CI/CD powered by  [GitHub Actions](https://help.github.com/en/actions/automating-your-workflow-with-github-actions)
 
 | [Continuos Integration(CI)](https://en.wikipedia.org/wiki/Continuous_integration) | [Continuos Deployment(CD)](https://en.wikipedia.org/wiki/Continuous_deployment) |
 | :---: | :---: |
 | ![Pull Request Unit Test Check](https://github.com/rproenza86/unit-conversion-grader/workflows/Pull%20Request%20Unit%20Test%20Check/badge.svg)  | ![Firebase Hosting Deployment](https://github.com/rproenza86/unit-conversion-grader/workflows/Firebase%20Hosting%20Deployment/badge.svg)  |
 
-
-## Description
-
-Web application for Science Teachers of the “Unit Conversion” science unit.
-
-### How it works
-
-Teachers assign students unit-conversion problems on paper worksheets. After students turn in their completed worksheet, the teachers will use this web app enter the questions and student responses into a computer to be graded.
-
-**Students will convert:**
-
-    - temperatures​ between: ​Kelvin, Celsius​,​ Fahrenheit​, and​ Rankine
-    - volumes​ between: ​liters​, ​tablespoons​, ​cubic-inches, cups​,​ cubic-feet, ​and​ gallons
 
 ## Table of Contents
 
@@ -34,45 +19,61 @@ Teachers assign students unit-conversion problems on paper worksheets. After stu
 - [Support](#support)
 - [License](#license)
 
+## Description
+
+This is a web application for allowing science teachers to grade unit conversion problems submitted by students.
+
+### How it works
+
+Teachers assign students unit-conversion problems on paper worksheets. After students turn in their completed worksheet, the teachers will use this web app enter the questions and student responses into a computer to be graded.
+
+**Students will convert the following units:**
+
+  - **Temperatures:** ​Kelvin, Celsius​,​ Fahrenheit​, and​ Rankine
+  - **Volumes​: ​Liters:**​ ​Tablespoons​, ​Cubic-inches, Cups​,​ Cubic-feet, ​and​ Gallons
+
+Note: the app does not allow conversion between invalid units.
+
+
 ## Technical Information
 
-These project is a ReactJS, Github and Firebase workshop. With the goals of augment development productivity and agility the next technologies were adopted:
+These project is a ReactJS, Github and Firebase workshop. The following technologies and methodologies were used to implement the application:
 
-    - Frameworks
-      -  ReactJS and Jest
-    - Workflow Automation
-      - GitHub Actions
-    - Project Management
-      - GitHub Projects
-    - Software Development Methodology
-      - Scrum with Kanban influences
-    - Components Libraries
-      - Material Components for React (MDC React) by Google Material Design team
-      - Ant Design by Ant Design Group
-      - React Suite by HYPERS
+- JavaScript Frameworks
+  -  ReactJS and Jest
+- Components Libraries
+  - Material Components for React (MDC React) by Google Material Design team
+  - Ant Design by Ant Design Group
+  - React Suite by HYPERS
+- Workflow Automation
+  - [GitHub Actions](https://github.com/rproenza86/unit-measure-conversion-judge/actions)
+- Project Management
+  - [GitHub Projects](https://github.com/rproenza86/unit-measure-conversion-judge/projects/1)
+- Software Development Methodology
+  - Scrum with Kanban influences
 
-## Project management
 
-Using GitHub Projects as management solution. Adopting Github organizational tooling to support the SDLC of this project.
+## Project Management
 
-High code quality guaranteed with 90% unit tests coverture and auto-code formatting before each commits.
+Since this is a small project, I used GitHub Projects to manage the project though normally I would use Jira. Adopting Github organizational tooling to support the SDLC of this project.
 
-Given the SDLC methodology Scrum, the artifact were mapped in the next way:
+Following a Scrum/Kanban methodology, the artifacts were mapped in the following manner:
 
-    - Product Backlog - Github Issues
-    - Sprint Backlog - Github Projects - ToDo column
-    - Product Increment - Github Projects Board
-    - Epics - Github Milestone
-    - Story - Github Issue
+- Product Backlog - Github Issues
+- Sprint Backlog - Github Projects - ToDo column
+- Product Increment - Github Projects Board
+- Epics - Github Milestone
+- Story - Github Issue
 
 The stories where grouped in Epics, moved into the project board stages from ToDo - In Progress - Review in Progress - Reviewer Approved - Done.
 
-    - For development process adopted the branch-based workflow of:
-        1. Branch from master on each new code change request
-        2. Prefix branch names with `{type of work}/us{issue number}/{description}` Ex. `feat/us21/sass-migration`
-        3. To merge new code additions a Pull Request is created, each PR is linked to a given Issue, the PR is validated running by the CI and is it pass the checks and coverage threshold it will be merged into the master branch
-        4. On code commit into the master branch a CD process it triggered, unit tests are ran and on success the app is build and deployed to Firebase hosting
-        5. Once the PR is merged the linked issue is closed automatically and moved to the Done stage
+For development process I used the following branch-based workflow:
+
+1. Branch from master on each new code change request
+2. Prefix branch names with `{type of work}/us{issue number}/{description}` Ex. `feat/us21/sass-migration`
+3. To merge new code additions a Pull Request is created, each PR is linked to a given Issue, the PR is validated running by the CI and is it pass the checks and coverage threshold it will be merged into the master branch
+4. On code commit into the master branch a CD process it triggered, unit tests are ran and on success the app is build and deployed to Firebase hosting
+5. Once the PR is merged the linked issue is closed automatically and moved to the Done stage
 
     - Created 4 epics/milestones
 ![milestones](docs/images/epics.png)
@@ -80,14 +81,14 @@ The stories where grouped in Epics, moved into the project board stages from ToD
     - The Project board has automation in place to move stories from stages. Ideally I would created one Github Project on this repo for each sprint but I consider it overkill for these small project
 ![github-projects-board](docs/images/github-projects-board.png)
 
-## Continuos Delivery
+## Continuous Delivery
 
 Using Continuous Integration as software development practice to automate the code testing process and Continuous Delivery to automating the entire software release process.
 
 To support the CI/CD initiative two automation work load were created:
 
-    1. For CI [Pull Request Unit Test Check](.github/workflows/pullrequesttest.yml)
-    2. For CD [Firebase Hosting Deployment](.github/workflows/hostingdeployment.yml)
+1. For CI [Pull Request Unit Test Check](.github/workflows/pullrequesttest.yml)
+2. For CD [Firebase Hosting Deployment](.github/workflows/hostingdeployment.yml)
 
 ## How to use
 
