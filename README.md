@@ -55,6 +55,8 @@ These project is a ReactJS, Github and Firebase workshop. With the goals of augm
 
 Using GitHub Projects as management solution. Adopting Github organizational tooling to support the SDLC of this project.
 
+High code quality guaranteed with 90% unit tests coverture and auto-code formatting before each commits.
+
 Given the SDLC methodology Scrum, the artifact were mapped in the next way:
 
     - Product Backlog - Github Issues
